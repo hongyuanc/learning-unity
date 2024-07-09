@@ -8,6 +8,7 @@ public class bird_script : MonoBehaviour
     public float scale = 5;
     public logic_manager logic_Manager;
     public bool status = true;
+    public float birdDeadZone = 3.7f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,12 @@ public class bird_script : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && status)
         {
             body.velocity = Vector2.up * scale;
+        }
+
+        if (transform.position.y > birdDeadZone || transform.position.y < -1 * birdDeadZone)
+        {
+            status = false;
+            logic_Manager.gameOver();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
