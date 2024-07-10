@@ -22,8 +22,14 @@ public class logic_manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void returnMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
     public void gameOver()
     {
         gameOverScene.SetActive(true);
+
     }
 }
