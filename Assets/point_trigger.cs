@@ -5,6 +5,7 @@ using UnityEngine;
 public class point_trigger : MonoBehaviour
 {
     public logic_manager logic_Manager;
+    public pipe_generate pipe;
 
     // Start is called before the first frame update
     void Start()
@@ -15,14 +16,24 @@ public class point_trigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
-            logic_Manager.addScore(1);
+            if (pipe_generate.interval > 1.2f) 
+            {
+                logic_Manager.addScore(1);
+            } else if (pipe_generate.interval > 1)
+            {
+                logic_Manager.addScore(2);
+            } else if (pipe_generate.interval <= 1)
+            {
+                logic_Manager.addScore(3);
+            }
+            
         }
        
     }

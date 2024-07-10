@@ -8,13 +8,16 @@ public class pipe_generate : MonoBehaviour
 {
 
     public GameObject pipe;
-    public float interval = 2;
+    public static float interval = 1.5f;
+    public float rate = 0.5f;
+    public float max_speed = 1;
     private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         generate();
+        interval = 1.5f;
     }
 
     // Update is called once per frame
@@ -28,6 +31,13 @@ public class pipe_generate : MonoBehaviour
         {
             generate ();
             timer = 0;
+
+            if (interval >= max_speed)
+            {
+                interval -= 0.025f;
+            }
+
+            Debug.Log(interval.ToString());
         }
     }
 
