@@ -6,11 +6,14 @@ public class point_trigger : MonoBehaviour
 {
     public logic_manager logic_Manager;
     public pipe_generate pipe;
+    public AudioSource audioSource;
+    public AudioClip point;
 
     // Start is called before the first frame update
     void Start()
     {
         logic_Manager = GameObject.FindGameObjectWithTag("Logic").GetComponent<logic_manager>();
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class point_trigger : MonoBehaviour
             }
             
         }
+        audioSource.PlayOneShot(point);
        
     }
 }
